@@ -20,12 +20,12 @@ type Response struct {
 }
 
 func main() {
-  http.HandleFunc("/users", userHandler)
+  http.HandleFunc("/users/", userHandler)
   log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func userHandler(w http.ResponseWriter, r *http.Request) {
-  login := r.URL.Query().Get("login")
+  login := r.URL.Path[len("/users/"):]
   fmt.Println("Getting data from twitch server for user " + login + "...")
   data, err := twitch.GetUserData(login)
   if err != nil {

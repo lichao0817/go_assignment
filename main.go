@@ -25,7 +25,7 @@ func main() {
   log.Fatal(http.ListenAndServe(":8080", nil))
 }
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
-  errorResponse := ErrorResponse{"Bad Request", 400, "The API requested is not currently supported please use http://localhost:8080/users/{username}"}
+  errorResponse := ErrorResponse{"Invalid API", 400, "The API requested is not currently supported please use http://localhost:8080/users/{username}"}
   json.NewEncoder(w).Encode(errorResponse)
 }
 

@@ -20,8 +20,13 @@ type Response struct {
 }
 
 func main() {
+  http.HandleFunc("/", defaultHandler)
   http.HandleFunc("/users/", userHandler)
   log.Fatal(http.ListenAndServe(":8080", nil))
+}
+func defaultHandler(w http.ResponseWriter, r *http.Request) {
+  errorResponse := ErrorResponse{"Bad Request", 400, "The API requested is not currently supported please use http://localhost:8080/users/{username}"}
+  json.NewEncoder(w).Encode(errorResponse)
 }
 
 func userHandler(w http.ResponseWriter, r *http.Request) {

@@ -24,7 +24,7 @@ cd go_assignment
 ## API Services
 ### URL
 ```
-GET https://localhost:8080/users/{username}
+GET http://localhost:8080/users/{username}
 ```
 ### Example Request 1 (Valid Username)
 ```
